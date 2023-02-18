@@ -22,17 +22,22 @@ pipeline{
 
             }
         }
-
-        // Stage3 : Publish the source code to Sonarqube
-        stage ('Sonarqube Analysis'){
+        stage ("nexus") {
             steps {
-                echo ' Source code published to Sonarqube for SCA......'
-                withSonarQubeEnv('sonarqube'){ // You can override the credential to be used
-                     sh 'mvn sonar:sonar'
-                }
-
+                nexusArtifactUploader credentialsId: '1fefa95b-1c0e-4295-b9d1-44db1ad64aa4', groupId: 'com.vinaysdevopslab', nexusUrl: '192.168.33.29:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'devisyam-SNAPSHOT', version: '4.0.0'
             }
         }
+
+        // Stage3 : Publish the source code to Sonarqube
+       // stage ('Sonarqube Analysis'){
+      //     steps {
+ //             echo ' Source code published to Sonarqube for SCA......'
+       //               withSonarQubeEnv('sonarqube'){ // You can override the credential to be used
+       //              sh 'mvn sonar:sonar'
+  //         }
+
+  //          }
+ //     }
 
         
         
