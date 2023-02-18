@@ -22,7 +22,7 @@ pipeline{
 
             }
         }
-        stage (nexus') {
+        stage (nexus'){
             steps {
                 nexusArtifactUploader credentialsId: '1fefa95b-1c0e-4295-b9d1-44db1ad64aa4', groupId: 'com.vinaysdevopslab', nexusUrl: '192.168.33.29:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'devisyam-SNAPSHOT', version: '0.0.8'
             }
