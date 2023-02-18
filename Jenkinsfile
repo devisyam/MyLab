@@ -30,7 +30,7 @@ pipeline{
         }
         stage ('nexus'){
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'VinayDevOpsLab', classifier: '', file: 'target/VinayDevOpsLab-0.0.8.war', type: 'war']], credentialsId: '1fefa95b-1c0e-4295-b9d1-44db1ad64aa4', groupId: 'com.vinaysdevopslab', nexusUrl: '192.168.33.29:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devisyam-SNAPSHOT', version: '0.0.8'
+                nexusArtifactUploader artifacts: [[artifactId: "${ArtifactId}", classifier: '', file: 'target/VinayDevOpsLab-0.0.8.war', type: 'war']], credentialsId: '1fefa95b-1c0e-4295-b9d1-44db1ad64aa4', groupId: "${GroupId}", nexusUrl: '192.168.33.29:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devisyam-SNAPSHOT', version: "${Version}"
             } 
        }
         stage ('Print Environment variables'){
